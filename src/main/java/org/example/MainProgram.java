@@ -2,6 +2,9 @@ package org.example;
 
 import java.util.Scanner;
 
+/* ---GRASP---
+Ekspert, który odpowiada za dane wprowadzane przez użytkownika i stworzenie obiektu faktury
+*/
 public final class MainProgram
 {
     private MainProgram(){}

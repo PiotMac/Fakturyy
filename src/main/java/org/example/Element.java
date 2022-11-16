@@ -1,24 +1,23 @@
 package org.example;
 
+/* ---GRASP---
+Klasa, która zna ilość towaru oraz oblicza jego łączną cenę
+ */
 public class Element
 {
     private final Towar towar;
     public final int iloscElementu;
-    private final double cenaElementu;
-    private final String nazwa;
-    public Element( final String artykul, final int ilosc, final double cena )
+    public Element( final int ilosc, final Towar towar )
     {
-        nazwa = artykul;
         iloscElementu = ilosc;
-        cenaElementu = cena;
-        towar = new Towar( ilosc, cena );
+        this.towar = towar;
     }
 
     public final void getInfo()
     {
-        System.out.println( "Nazwa artykułu: " + nazwa );
+        System.out.println( "Nazwa artykułu: " + towar.nazwa );
         System.out.println( "Ilość artykułu: " + iloscElementu );
-        System.out.println( "Cena brutto za sztukę: " + cenaElementu + "zł" );
-        towar.getPrice();
+        System.out.println( "Cena brutto za sztukę: " + towar.cena + "zł" );
+        System.out.println( "Łączna cena brutto: " + ( iloscElementu * towar.cena ) + "zł" );
     }
 }

@@ -1,14 +1,15 @@
 package org.example;
 
+/* ---GRASP---
+Klasa, która posiada nazwę i cenę pojedynczego produktu
+ */
 public class Towar
 {
-    public final double cenaBrutto;
-    public Towar( final int ilosc, final double cena )
+    String nazwa;
+    public double cena;
+    public Towar( final String nazwa, final double cena )
     {
-        cenaBrutto = ilosc * cena;
-    }
-    public final void getPrice()
-    {
-        System.out.println( "Łączna cena brutto: " + cenaBrutto + "zł" );
+        this.nazwa = nazwa;
+        this.cena = cena;
     }
 }

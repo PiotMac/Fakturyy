@@ -3,6 +3,9 @@ package org.example;
 import java.util.List;
 import java.util.ArrayList;
 
+/* ---GRASP---
+Klasa, która zna zakupione elementy, odpowiada za dodanie ich do faktury oraz drukuje fakturę
+ */
 public final class Faktura
 {
     private String imie;
@@ -33,7 +36,8 @@ public final class Faktura
         {
             throw new BadDataException();
         }
-        Element element = new Element( artykul, ilosc, cena );
+        Towar towarDoElementu = new Towar( artykul, cena );
+        Element element = new Element( ilosc, towarDoElementu );
         elementy.add( element );
     }
 

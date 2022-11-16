@@ -9,9 +9,10 @@ public class JUnitTests
     {
         int ilosc = 12345;
         double cena = 212.26;
-        Towar towar = new Towar(ilosc, cena);
+        Towar towar = new Towar("Produkt", cena );
+        Element element = new Element( ilosc, towar );
 
-        Assert.assertEquals(ilosc * cena, towar.cenaBrutto, 0.0);
+        Assert.assertEquals(ilosc * cena, element.iloscElementu * towar.cena, 0.0);
     }
 
     @Test(expected = BadDataException.class)
