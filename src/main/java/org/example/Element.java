@@ -3,28 +3,22 @@ package org.example;
 public class Element
 {
     private final Towar towar;
-    private final int iloscElementu;
+    public final int iloscElementu;
     private final double cenaElementu;
+    private final String nazwa;
     public Element( final String artykul, final int ilosc, final double cena )
     {
+        nazwa = artykul;
         iloscElementu = ilosc;
         cenaElementu = cena;
-        towar = new Towar( artykul, ilosc, cena );
+        towar = new Towar( ilosc, cena );
     }
 
-    public final void getName()
+    public final void getInfo()
     {
-        towar.getName();
-    }
-
-    public final void getIlosc()
-    {
+        System.out.println( "Nazwa artykułu: " + nazwa );
         System.out.println( "Ilość artykułu: " + iloscElementu );
-    }
-    public final void getCena() { System.out.println( "Cena brutto za sztukę: " + cenaElementu + "zł" ); }
-
-    public final void getCenaBrutto()
-    {
+        System.out.println( "Cena brutto za sztukę: " + cenaElementu + "zł" );
         towar.getPrice();
     }
 }

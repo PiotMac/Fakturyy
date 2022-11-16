@@ -7,7 +7,7 @@ public final class MainProgram
     private MainProgram(){}
     public static void main( final String[] args ) throws BadDataException
     {
-        final Scanner scan = new Scanner( System.in );
+        Scanner scan = new Scanner( System.in );
         System.out.println( "Czy chciał*byś wystawić fakturę?[T/N]" );
         String wiadomosc = scan.nextLine();
         switch ( wiadomosc )
@@ -16,14 +16,13 @@ public final class MainProgram
             {
                 Faktura faktura = new Faktura();
                 System.out.println( "Imię klienta: " );
-                wiadomosc = scan.nextLine();
-                faktura.setImie( wiadomosc );
+                String imie = scan.nextLine();
                 System.out.println( "Nazwisko klienta: " );
-                wiadomosc = scan.nextLine();
-                faktura.setNazwisko( wiadomosc );
+                String nazwisko = scan.nextLine();
+                faktura.setDane( imie, nazwisko );
                 String elementyWiadomosc;
                 elementyWiadomosc = "T";
-                while( elementyWiadomosc.equalsIgnoreCase( "T" ) )
+                while( "T".equalsIgnoreCase( elementyWiadomosc ) )
                 {
                     System.out.println( "Czy chcial*bys dodac element?[T/N]" );
                     elementyWiadomosc = scan.nextLine();
@@ -39,14 +38,7 @@ public final class MainProgram
                             try
                             {
                                 ilosc = Integer.parseInt( scan.nextLine() );
-                            }
-                            catch ( NumberFormatException ex )
-                            {
-                                throw new BadDataException();
-                            }
-                            System.out.println( "Podaj cenę brutto za jeden artykuł: " );
-                            try
-                            {
+                                System.out.println( "Podaj cenę brutto za jeden artykuł: " );
                                 cena = Double.parseDouble( scan.nextLine() );
                             }
                             catch ( NumberFormatException ex )
@@ -62,7 +54,7 @@ public final class MainProgram
                         }
                         default ->
                         {
-                            while( !( elementyWiadomosc.equals( "T" ) ) && !( elementyWiadomosc.equals( "N" ) ) )
+                            while( !( "T".equals( elementyWiadomosc ) ) && !( "N".equals( elementyWiadomosc ) ) )
                             {
                                 System.out.println( "Wprowadzono błędne dane, spróbuj jeszcze raz." );
                                 System.out.println( "Czy chcial*bys dodac element?[T/N]" );

@@ -7,29 +7,19 @@ public class JUnitTests
     @Test
     public void testPriceBrutto()
     {
-        String artykul = "Woda";
         int ilosc = 12345;
         double cena = 212.26;
-        Towar towar = new Towar(artykul, ilosc, cena);
+        Towar towar = new Towar(ilosc, cena);
 
         Assert.assertEquals(ilosc * cena, towar.cenaBrutto, 0.0);
     }
 
     @Test(expected = BadDataException.class)
-    public void testImie() throws BadDataException
+    public void testSetDane() throws BadDataException
     {
         Faktura faktura = new Faktura();
 
-        faktura.setImie( "" );
-
-    }
-
-    @Test(expected = BadDataException.class)
-    public void testNazwisko() throws BadDataException
-    {
-        Faktura faktura = new Faktura();
-
-        faktura.setNazwisko( "" );
+        faktura.setDane( "", "" );
     }
 
     @Test(expected = BadDataException.class)

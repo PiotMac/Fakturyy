@@ -1,36 +1,26 @@
 package org.example;
 
-//import java.util.Scanner;
-
+import java.util.List;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public final class Faktura
 {
     private String imie;
     private String nazwisko;
-    private final ArrayList<Element> elementy = new ArrayList<>();
-    public void setImie( final String wiadomosc ) throws BadDataException
+    private final List<Element> elementy = new ArrayList<>();
+    public void setDane( final String imie, final String nazwisko ) throws BadDataException
     {
-        if ( Objects.equals( wiadomosc, "" ) )
+        if ( "".equals( imie ) || "".equals( nazwisko ) )
         {
             throw new BadDataException();
         }
-        imie = wiadomosc;
-    }
-
-    public void setNazwisko( final String wiadomosc ) throws BadDataException
-    {
-        if ( Objects.equals( wiadomosc, "" ) )
-        {
-            throw new BadDataException();
-        }
-        nazwisko = wiadomosc;
+        this.imie = imie;
+        this.nazwisko = nazwisko;
     }
 
     public void addElement( final String artykul, final int ilosc, final double cena ) throws BadDataException
     {
-        if ( Objects.equals( artykul, "" ) || ilosc <= 0 || cena <= 0.0 )
+        if ( "".equals( artykul ) || ilosc <= 0 || cena <= 0.0 )
         {
             throw new BadDataException();
         }
@@ -49,20 +39,18 @@ public final class Faktura
 
     private void showElements()
     {
+        System.out.println( "Imię: " + imie );
+        System.out.println( "Nazwisko: " + nazwisko );
         for ( int counter = 0; counter < elementy.size(); counter++ )
         {
             System.out.println( "----- ELEMENT NR " + ( counter + 1 ) + " -----" );
-            elementy.get( counter ).getName();
-            elementy.get( counter ).getIlosc();
-            elementy.get( counter ).getCena();
-            elementy.get( counter ).getCenaBrutto();
+
+            elementy.get( counter ).getInfo();
         }
     }
 
     public void getFaktura()
     {
-        System.out.println( "Imię: " + imie );
-        System.out.println( "Nazwisko: " + nazwisko );
         showElements();
     }
 }
